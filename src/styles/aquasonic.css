@@ -1,0 +1,145 @@
+/* =====================================================
+   Paleta de colores Aquasonic
+   ===================================================== */
+:root {
+  /* Azules oceánicos — color primario */
+  --aquasonic-ocean:   #0085AA;
+  --aquasonic-sky:     #36A1BA;
+  --aquasonic-wave:    #60BDCC;
+  --aquasonic-breeze:  #6FD2E2;
+  --aquasonic-ice:     #BBF9FF;
+  --aquasonic-mist:    #D7FBFF;
+
+  /* Corales — acento cálido */
+  --aquasonic-coral:   #F9673C;
+  --aquasonic-flamingo:#FF896E;
+  --aquasonic-peach:   #FFA697;
+  --aquasonic-clay:    #EAA393;
+  --aquasonic-sand:    #FFCCB8;
+  --aquasonic-blush:   #FFE1DC;
+
+  /* Neutros */
+  --aquasonic-stone:   #979B9B;
+  --aquasonic-gray:    #3B4656;
+  --aquasonic-white:   #ffffff;
+  --aquasonic-header-bg:   #ececec;
+  --aquasonic-header-text: #242424;
+  --aquasonic-timer:   #d6b170;
+
+  /* Verdes esmeralda */
+  --aquasonic-emerald: #00A896;
+  --aquasonic-teal:    #2DB8A6;
+  --aquasonic-mint:    #5EC9B8;
+  --aquasonic-foam:    #7FD8BE;
+  --aquasonic-seafoam: #B8E6D4;
+  --aquasonic-pearl:   #D4F0E6;
+}
+
+/* =====================================================
+   Tema Starlight — Modo claro
+   ===================================================== */
+:root,
+[data-theme='light'] {
+  --sl-color-accent-low:    var(--aquasonic-mist);
+  --sl-color-accent:        var(--aquasonic-ocean);
+  --sl-color-accent-high:   #005f7a;
+
+  --sl-color-white:         #ffffff;
+  --sl-color-gray-1:        var(--aquasonic-gray);
+  --sl-color-gray-2:        #4a5568;
+  --sl-color-gray-3:        #718096;
+  --sl-color-gray-4:        #a0aec0;
+  --sl-color-gray-5:        #cbd5e0;
+  --sl-color-gray-6:        #e2e8f0;
+  --sl-color-black:         #1a202c;
+
+  --sl-color-bg:            #ffffff;
+  --sl-color-bg-nav:        #f7fdfe;
+  --sl-color-bg-sidebar:    #f0fbfc;
+  --sl-color-hairline-light:#ddf4f7;
+  --sl-color-hairline:      #c5eef2;
+  --sl-color-hairline-dark: #a5e3ea;
+
+  --sl-color-text:          var(--aquasonic-gray);
+  --sl-color-text-accent:   var(--aquasonic-ocean);
+
+  /* Badges / Tips */
+  --sl-color-green-low:     var(--aquasonic-pearl);
+  --sl-color-green:         var(--aquasonic-emerald);
+  --sl-color-green-high:    #007a6d;
+
+  --sl-color-orange-low:    var(--aquasonic-blush);
+  --sl-color-orange:        var(--aquasonic-coral);
+  --sl-color-orange-high:   #c94d25;
+}
+
+/* =====================================================
+   Tema Starlight — Modo oscuro
+   ===================================================== */
+[data-theme='dark'] {
+  --sl-color-accent-low:    #003d52;
+  --sl-color-accent:        var(--aquasonic-wave);
+  --sl-color-accent-high:   var(--aquasonic-ice);
+
+  --sl-color-white:         #ffffff;
+  --sl-color-gray-1:        #e8f6f9;
+  --sl-color-gray-2:        #b0d8e3;
+  --sl-color-gray-3:        #7db8c8;
+  --sl-color-gray-4:        #4d8fa0;
+  --sl-color-gray-5:        #2d6070;
+  --sl-color-gray-6:        #1a3d4a;
+  --sl-color-black:         #0d1f26;
+
+  --sl-color-bg:            #0f2833;
+  --sl-color-bg-nav:        #0a1e28;
+  --sl-color-bg-sidebar:    #0c2230;
+  --sl-color-hairline-light:#1a3d4a;
+  --sl-color-hairline:      #1f4a5a;
+  --sl-color-hairline-dark: #2a5f72;
+
+  --sl-color-text:          #cce9f0;
+  --sl-color-text-accent:   var(--aquasonic-breeze);
+
+  --sl-color-green-low:     #003d36;
+  --sl-color-green:         var(--aquasonic-teal);
+  --sl-color-green-high:    var(--aquasonic-seafoam);
+
+  --sl-color-orange-low:    #4a1f14;
+  --sl-color-orange:        var(--aquasonic-flamingo);
+  --sl-color-orange-high:   var(--aquasonic-sand);
+}
+
+/* =====================================================
+   Tipografía
+   ===================================================== */
+:root {
+  --sl-font: 'Inter', system-ui, -apple-system, sans-serif;
+  --sl-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* =====================================================
+   Detalles visuales
+   ===================================================== */
+
+/* Borde izquierdo en bloques de código */
+.sl-markdown-content pre {
+  border-left: 3px solid var(--aquasonic-wave);
+}
+
+/* Links internos */
+.sl-markdown-content a {
+  color: var(--aquasonic-ocean);
+}
+[data-theme='dark'] .sl-markdown-content a {
+  color: var(--aquasonic-breeze);
+}
+
+/* Tablas — header */
+.sl-markdown-content th {
+  background-color: var(--aquasonic-mist);
+  color: var(--aquasonic-gray);
+}
+[data-theme='dark'] .sl-markdown-content th {
+  background-color: #1a3d4a;
+  color: var(--aquasonic-ice);
+}
