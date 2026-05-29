@@ -54,7 +54,7 @@
   --sl-color-black:         #1a202c;
 
   --sl-color-bg:            #ffffff;
-  --sl-color-bg-nav:        #f7fdfe;
+  --sl-color-bg-nav:        var(--aquasonic-white);
   --sl-color-bg-sidebar:    #f0fbfc;
   --sl-color-hairline-light:#ddf4f7;
   --sl-color-hairline:      #c5eef2;
@@ -71,6 +71,15 @@
   --sl-color-orange-low:    var(--aquasonic-blush);
   --sl-color-orange:        var(--aquasonic-coral);
   --sl-color-orange-high:   #c94d25;
+}
+
+/* Sobrescribe props.css de Starlight (mayor especificidad) */
+:root[data-theme='light'] {
+  --sl-color-bg-nav: var(--aquasonic-white);
+}
+
+:root[data-theme='dark'] {
+  --sl-color-bg-nav: #0a1e28;
 }
 
 /* =====================================================
@@ -115,6 +124,73 @@
 :root {
   --sl-font: 'Inter', system-ui, -apple-system, sans-serif;
   --sl-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* =====================================================
+   Página de inicio — hero
+   ===================================================== */
+
+.home-hero {
+  margin: 0 0 2rem;
+}
+
+.home-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgb(0 133 170 / 12%);
+}
+
+/* Logo en cabecera */
+.site-title img {
+  max-height: 2.25rem;
+  width: auto;
+  object-fit: contain;
+}
+
+/* =====================================================
+   Cabecera — fondo blanco con borde ocean
+   ===================================================== */
+
+header.header {
+  background-color: var(--aquasonic-white) !important;
+  border-bottom: 2px solid var(--aquasonic-ocean);
+}
+
+[data-theme='dark'] header.header {
+  background-color: #0a1e28 !important;
+  border-bottom-color: var(--aquasonic-wave);
+}
+
+@media (min-width: 50rem) {
+  header.header site-search button[data-open-modal] {
+    border-color: var(--aquasonic-ocean);
+  }
+
+  header.header site-search button[data-open-modal]:hover {
+    border-color: var(--aquasonic-sky);
+    color: var(--aquasonic-ocean);
+  }
+}
+
+header.header .social-icons::after {
+  border-color: var(--aquasonic-ocean);
+}
+
+[data-theme='dark'] header.header .social-icons::after {
+  border-color: var(--aquasonic-wave);
+}
+
+/* =====================================================
+   Sidebar — página seleccionada en coral
+   ===================================================== */
+
+.sidebar-content [aria-current='page'],
+.sidebar-content [aria-current='page']:hover,
+.sidebar-content [aria-current='page']:focus {
+  background-color: var(--aquasonic-coral);
+  color: var(--aquasonic-white);
 }
 
 /* =====================================================

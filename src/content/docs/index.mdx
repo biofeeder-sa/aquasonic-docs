@@ -1,10 +1,62 @@
 ---
-title: Bienvenido a Aquasonic Docs
-description: Documentación técnica del sistema Aquasonic desarrollado por biofeeder-sa.
+title: Aquasonic Docs
+description: Documentación de la plataforma Aquasonic, organizada por componente.
 ---
 
-## ¿Qué es Aquasonic?
+import heroImage from '../../assets/images/hero/aquasonic-docs-hero.png';
 
-**Aquasonic** es un sistema de monitoreo y control desarrollado con Angular 17+ por el equipo
-de **biofeeder-sa**. Integra dashboards en tiempo real, gestión de dispositivos y comunicación
-con una API REST propia.
+<div class="home-hero">
+  <img src={heroImage.src} alt="Aquasonic Docs — documentación técnica de la plataforma" />
+</div>
+
+Esta documentación cubre la plataforma **Aquasonic** de forma integral, organizada por componente visual.
+El objetivo es que cualquier miembro del equipo pueda entender qué hace cada pantalla, cómo está construida y cómo se relaciona con el resto del sistema.
+
+---
+
+## ¿Qué documenta este sitio?
+
+La plataforma Aquasonic está estructurada en torno a tres dashboards principales, cada uno con sus propios componentes y responsabilidades.
+
+---
+
+### Dashboard de Camaroneras
+
+Vista de listado que muestra todas las camaroneras registradas en el sistema.
+
+| Componente | Descripción |
+|------------|-------------|
+| **Card** | Tarjeta resumen de cada camaronera con sus datos principales |
+
+---
+
+### Dashboard de Camaronera
+
+Vista de detalle de una camaronera específica seleccionada desde el listado.
+
+| Componente | Descripción |
+|------------|-------------|
+| **Tabla** | Listado de piscinas asociadas a la camaronera |
+| **Mapa** | Visualización geográfica de la camaronera y sus piscinas |
+
+---
+
+### Dashboard de Piscina
+
+Vista más completa del sistema. Concentra toda la información operativa y productiva de una piscina individual.
+
+| Componente | Descripción |
+|------------|-------------|
+| **KPI** | Indicadores clave en tiempo real de la piscina |
+| **Gráfico Semanal** | Evolución semanal de variables |
+| **Zonas (Unidades Centrales)** | Dispositivos y sensores distribuidos en la piscina |
+| **Gráfico de Ciclo** | Visualización del ciclo productivo activo |
+| **Tabla de Ciclos — Semanal** | Resumen semanal del historial de ciclos |
+| **Tabla de Ciclos — Diario** | Detalle diario del historial de ciclos |
+
+---
+
+## Cómo usar esta documentación
+
+Navega por el sidebar izquierdo usando la sección **Componentes**.
+Cada entrada corresponde a un componente real de la plataforma y documenta su propósito, estructura y comportamiento.
