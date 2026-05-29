@@ -1,0 +1,69 @@
+---
+description: Convenciones para escribir páginas de documentación en Starlight (.md / .mdx)
+globs: src/content/docs/**/*.{md,mdx}
+alwaysApply: false
+---
+
+# Convenciones de documentación
+
+## Frontmatter obligatorio
+
+Toda página debe incluir al menos:
+
+```yaml
+---
+title: Título descriptivo
+description: Descripción breve (para SEO y og:description).
+---
+```
+
+## Frontmatter opcional útil
+
+```yaml
+sidebar:
+  order: 2          # orden dentro de la sección
+  label: Nombre corto  # nombre alternativo en el sidebar
+lastUpdated: true   # muestra fecha de última edición
+```
+
+## Estructura de encabezados
+
+- `# H1` — no usar (lo agrega Starlight automáticamente desde `title`)
+- `## H2` — secciones principales
+- `### H3` — subsecciones
+- No saltar niveles
+
+## Asides (llamadas de atención)
+
+```md
+:::note
+Nota informativa.
+:::
+
+:::tip
+Consejo práctico.
+:::
+
+:::caution
+Advertencia importante.
+:::
+
+:::danger
+Riesgo crítico.
+:::
+```
+
+## Bloques de código
+
+Siempre indicar el lenguaje y, si aplica, el nombre del archivo:
+
+```ts title="src/app/app.module.ts"
+// código TypeScript aquí
+```
+
+## Nuevo documento — pasos
+
+1. Crear archivo en la carpeta correcta bajo `src/content/docs/`
+2. Agregar frontmatter `title` + `description`
+3. Si la carpeta es nueva, Starlight la detecta automáticamente (por `autogenerate`)
+4. Verificar con `npm run dev` que aparece en el sidebar

@@ -1,0 +1,37 @@
+---
+description: Contexto general del proyecto aquasonic-docs y convenciones del repositorio
+alwaysApply: true
+---
+
+# Proyecto: aquasonic-docs
+
+Sitio de documentación técnica de **Aquasonic** (biofeeder-sa), construido con **Astro Starlight**.
+
+## Datos clave
+
+- **Organización**: biofeeder-sa
+- **Repositorio docs**: `https://github.com/biofeeder-sa/aquasonic-docs`
+- **Repositorio app**: `https://github.com/biofeeder-sa/aquasonic`
+- **URL publicada**: `https://biofeeder-sa.github.io/aquasonic-docs`
+- **Idioma predeterminado**: Español (`es`)
+- **Stack documentado**: Angular 17+, Angular Material, amCharts v4, API REST
+
+## Estructura de contenido
+
+```
+src/content/docs/
+  index.mdx              ← Página de bienvenida (hero)
+  changelog.md           ← Historial de versiones
+  guias/                 ← Guías de inicio rápido
+  arquitectura/          ← Arquitectura del sistema
+  componentes/           ← Componentes Angular
+  servicios/             ← Servicios Angular
+  api/                   ← API REST / Endpoints
+```
+
+## Convenciones
+
+- Todo el contenido se escribe en **español**
+- Cada página lleva frontmatter con `title` y `description`
+- Las páginas de sección principal llevan `sidebar.order: 1`
+- Usar `:::note`, `:::tip`, `:::caution` para llamadas de atención (asides de Starlight)

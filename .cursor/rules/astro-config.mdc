@@ -1,0 +1,52 @@
+---
+description: Convenciones para modificar la configuración de Astro y Starlight
+globs: astro.config.{mjs,ts}
+alwaysApply: false
+---
+
+# Configuración Astro / Starlight
+
+## Archivo principal
+
+`astro.config.mjs` — no renombrar ni dividir.
+
+## Agregar una sección al sidebar
+
+Dentro del array `sidebar` en `astro.config.mjs`:
+
+```js
+// Sección autogenerada (recomendado)
+{
+  label: 'Nueva Sección',
+  autogenerate: { directory: 'nueva-seccion' },
+},
+
+// Sección con link directo
+{
+  label: 'Página única',
+  link: '/ruta-de-la-pagina',
+},
+```
+
+## Base path
+
+El `base: '/aquasonic-docs'` **siempre** debe estar presente.
+Todos los links internos deben incluirlo: `/aquasonic-docs/guias/...`
+
+## Internacionalización
+
+El sitio usa `defaultLocale: 'root'` con `lang: 'es'`.
+No agregar más idiomas sin acordarlo con el equipo.
+
+## CSS personalizado
+
+El archivo de estilos es `src/styles/aquasonic.css`.
+Contiene la paleta de colores Aquasonic y sobrescribe las variables CSS de Starlight
+tanto para modo claro como oscuro. Está registrado en `astro.config.mjs` bajo `customCss`.
+
+**No eliminar ni renombrar** ese archivo; cambios de paleta deben hacerse ahí.
+
+## Plugins / integraciones
+
+Antes de agregar una nueva integración Astro, verificar compatibilidad con Starlight
+en [https://starlight.astro.build/guides/plugins/](https://starlight.astro.build/guides/plugins/).
