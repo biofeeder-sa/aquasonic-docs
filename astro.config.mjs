@@ -10,6 +10,12 @@ export default defineConfig({
       title: 'Aquasonic Docs',
       description: 'Documentación técnica del sistema Aquasonic — biofeeder-sa',
 
+      logo: {
+        src: './src/assets/images/logo/aquasonic-logo.avif',
+        alt: 'Aquasonic Docs',
+        replacesTitle: true,
+      },
+
       customCss: ['./src/styles/aquasonic.css'],
 
       defaultLocale: 'root',
