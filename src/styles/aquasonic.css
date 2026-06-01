@@ -250,6 +250,16 @@ header.header .social-icons::after {
   color: var(--aquasonic-white);
 }
 
+/* Capturas del panel KPI */
+.sl-markdown-content .kpi-panel-screenshot {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1rem 0 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 24px rgb(0 133 170 / 12%);
+}
+
 /* Embeds de video (YouTube, etc.) */
 .sl-markdown-content .video-embed {
   position: relative;

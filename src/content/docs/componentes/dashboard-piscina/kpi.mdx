@@ -1,0 +1,143 @@
+---
+title: KPI
+description: Panel de estado de la piscina en el Dashboard de Piscina.
+sidebar:
+  order: 2
+---
+
+import panelScreenshot from '../../../../assets/images/componentes/dashboard-piscina/pond-status-panel.png';
+
+El **panel de KPI** es el encabezado del dashboard de ciclo. Muestra las métricas más importantes de la piscina: superficie, biomasa, peso, crecimiento, eficiencia y estado del ciclo.
+
+<img
+  src={panelScreenshot.src}
+  alt="Panel de estado de la piscina: hectáreas, biomasa, FCA, peso, incremento, eficiencia y días de producción"
+  width="100%"
+  class="kpi-panel-screenshot"
+/>
+
+:::note[Leyenda de la captura]
+Los valores `--` o `NA` indican que aún no hay dato calculable para esa métrica. Pasa el cursor sobre ellos para ver una explicación con el motivo más probable.
+:::
+
+## Vista general del panel
+
+El panel se divide en **tres zonas** separadas por líneas verticales:
+
+| Zona | Contenido principal |
+|------|---------------------|
+| **Izquierda** | Superficie y biomasa (ha, por tolva, total) + botón **Ver Siembra** |
+| **Centro** | FCA, **PESO**, incremento de crecimiento, fecha de actualización, estado del ciclo y selector de ciclo |
+| **Derecha** | Eficiencia del ciclo, días de producción, % en acústico, etiqueta GRXSEG + botón **Ver Reporte** |
+
+El color de fondo del panel cambia según el estado del ciclo (por ejemplo, siembra vs. producción).
+
+---
+
+## Columna izquierda
+
+| Etiqueta en pantalla | Qué representa | Cuándo aparece `--` |
+|----------------------|----------------|---------------------|
+| **HECTÁREAS** | Superficie de la piscina en hectáreas | Casi nunca (dato de configuración de la piscina) |
+| **BIOMASA x HA (lbs)** | Biomasa estimada por hectárea | Sin muestreo de peso, ciclo con menos de 7 días de producción, sin alimentadores o sin biomasa acústica válida en los últimos 7 días |
+| **BIOMASA x TOLVA (lbs)** | Biomasa por tolva/alimentador | Igual que biomasa × ha; además si no hay alimentadores asignados |
+| **BIOMASA TOTAL (lbs)** | Biomasa total de la piscina | Mismas reglas que las otras dos métricas de biomasa |
+| **VER SIEMBRA** | Abre el detalle de siembra del ciclo | No es un valor numérico |
+
+Los valores de biomasa en libras se muestran en **miles con sufijo k** cuando hay dato (por ejemplo, 9197 se ve como **9.1k**).
+
+---
+
+## Zona central
+
+| Elemento | Qué representa | Notas |
+|----------|----------------|-------|
+| **FCA** (valor grande a la izquierda) | Factor de conversión alimenticia según la opción del menú | Ver menú FCA más abajo |
+| **PESO** | Último peso promedio registrado (muestreo) | `--` si no hay muestreo de peso |
+| **INC (2S)** u otra etiqueta | Incremento de crecimiento según la opción del menú | Ver menú de crecimiento más abajo |
+| Fecha bajo el peso (ej. **12 MAY.**) | Última fecha de actualización del peso | `--` si no hay fecha |
+| Estado (ej. **PRODUCCIÓN**) | Estado actual del ciclo | Texto traducido en la interfaz |
+| Selector (ej. **312#1**) | Ciclo activo; permite cambiar a ciclos anteriores de la piscina | Al elegir otro ciclo, se actualiza todo el dashboard |
+
+### Menú FCA
+
+Opciones disponibles en el desplegable:
+
+- **FCA**
+- **FCA (1S)**
+- **FCA (2S)**
+
+Si no hay muestreo de peso, el valor mostrado es **`--`**.
+
+### Menú de crecimiento
+
+Opciones disponibles en el desplegable:
+
+- **CREC SEM**
+- **INC (DIA)**
+- **INC (1S)**
+- **INC (2S)**
+
+Si no hay fecha de referencia, el valor mostrado es **`--`**.
+
+---
+
+## Columna derecha
+
+| Etiqueta en pantalla | Qué representa | Valor vacío |
+|----------------------|----------------|-------------|
+| **EFICIENCIA DEL CICLO** | Porcentaje de eficiencia de dosis del ciclo | **NA** cuando no se puede calcular |
+| **DÍAS DE PRODUCCIÓN** | Días transcurridos en producción | Suele mostrarse siempre |
+| **CICLO EN ACÚSTICO** | Porcentaje del ciclo alimentado en modo acústico | **NA** cuando no aplica; también se refleja en la barra inferior del panel |
+| **GRXSEG** / **GRXREV** | Etiqueta informativa del dispositivo | Solo etiqueta; no lleva valor numérico |
+| **VER REPORTE** | Abre o genera el resumen de alimentación en PDF | Acción, no métrica |
+
+---
+
+## Por qué ves `--` o `NA`
+
+La interfaz muestra **`--`** o **`NA`** cuando el sistema aún no puede calcular o mostrar ese dato. No es un error de pantalla: significa que faltan condiciones (muestreo, días de ciclo, alimentación registrada, etc.).
+
+:::tip
+Pasa el cursor sobre un **`--`** o **`NA`** para ver un mensaje de ayuda con el motivo más probable según el estado actual de la piscina.
+:::
+
+### Motivos habituales
+
+**Biomasa (las tres métricas)**
+
+1. Sin peso registrado → hace falta un muestreo.
+2. Menos de 7 días de producción → el ciclo aún no cumple la ventana mínima.
+3. Biomasa por tolva → sin alimentadores asignados.
+4. En otro caso → no hay biomasa acústica válida en los últimos 7 días (día reconciliado, o buena eficiencia de dosis y tiempo acústico suficiente en ese periodo).
+
+**FCA**
+
+Mismas condiciones que biomasa en la opción **FCA**. Si la biomasa ya es válida pero FCA sigue vacío, el cálculo de FCA acústico aún no está disponible. Las opciones **FCA (1S)** y **FCA (2S)** pueden quedar vacías aunque exista peso, si aún no hay datos semanales.
+
+**PESO y fecha**
+
+Sin muestreo de peso → registrar muestreo en el sistema.
+
+**Incremento (CREC SEM / INC)**
+
+Sin día de referencia de peso, o historial insuficiente (por ejemplo **INC (2S)** necesita más días de historial).
+
+**CICLO EN ACÚSTICO**
+
+Sin kilogramos reales registrados en el ciclo, o sin alimentación acústica acumulada.
+
+**EFICIENCIA DEL CICLO**
+
+Sin alimentadores, sin registros de alimentación suficientes o sin datos de estado de los equipos para calcular la eficiencia.
+
+### Resumen por campo
+
+| Campo en pantalla | Causa habitual cuando no hay dato |
+|-------------------|-----------------------------------|
+| Biomasa (×3) | Pocos días de ciclo, sin peso, sin tolvas o sin biomasa acústica válida |
+| FCA | Mismas causas que biomasa, o FCA aún no calculado |
+| PESO / fecha | Falta registrar muestreo de peso |
+| CREC / INC | Falta peso de referencia o historial según la opción elegida |
+| CICLO EN ACÚSTICO | Sin kilogramos registrados en el ciclo |
+| EFICIENCIA DEL CICLO | No se cumplen las condiciones para medir eficiencia |
