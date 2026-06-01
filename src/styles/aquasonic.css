@@ -174,12 +174,29 @@ header.header {
   }
 }
 
+header.header .social-icons a {
+  color: var(--aquasonic-ocean);
+}
+
+header.header .social-icons a:hover {
+  color: var(--aquasonic-sky);
+  opacity: 1;
+}
+
 header.header .social-icons::after {
   border-color: var(--aquasonic-ocean);
 }
 
+[data-theme='dark'] header.header .social-icons a {
+  color: var(--aquasonic-ocean);
+}
+
+[data-theme='dark'] header.header .social-icons a:hover {
+  color: var(--aquasonic-wave);
+}
+
 [data-theme='dark'] header.header .social-icons::after {
-  border-color: var(--aquasonic-wave);
+  border-color: var(--aquasonic-ocean);
 }
 
 /* =====================================================
@@ -210,12 +227,44 @@ header.header .social-icons::after {
   color: var(--aquasonic-breeze);
 }
 
-/* Tablas — header */
+/* Tablas — cabecera y celdas
+   Starlight pone padding-inline 0 en primera/última columna (markdown.css). */
+.sl-markdown-content :is(th, td):not(:where(.not-content *)) {
+  padding: 0.65rem 1rem;
+}
+
+.sl-markdown-content :is(th:first-child, td:first-child):not(:where(.not-content *)) {
+  padding-inline-start: 1rem;
+}
+
+.sl-markdown-content :is(th:last-child, td:last-child):not(:where(.not-content *)) {
+  padding-inline-end: 1rem;
+}
+
 .sl-markdown-content th {
-  background-color: var(--aquasonic-mist);
-  color: var(--aquasonic-gray);
+  background-color: var(--aquasonic-ocean);
+  color: var(--aquasonic-white);
 }
 [data-theme='dark'] .sl-markdown-content th {
-  background-color: #1a3d4a;
-  color: var(--aquasonic-ice);
+  background-color: var(--aquasonic-ocean);
+  color: var(--aquasonic-white);
+}
+
+/* Embeds de video (YouTube, etc.) */
+.sl-markdown-content .video-embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgb(0 133 170 / 15%);
+}
+
+.sl-markdown-content .video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
