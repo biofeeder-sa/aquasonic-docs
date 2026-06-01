@@ -5,12 +5,13 @@ sidebar:
   order: 2
 ---
 
-import panelScreenshot from '../../../../assets/images/componentes/dashboard-piscina/pond-status-panel.png';
+import panelKpiEstado from '../../../../assets/images/componentes/dashboard-piscina/panel-kpi-estado-piscina.png';
+import tooltipKpiJornadasValidas from '../../../../assets/images/componentes/dashboard-piscina/tooltip-kpi-jornadas-validas.png';
 
 El **panel de KPI** es el encabezado del dashboard de ciclo. Muestra las métricas más importantes de la piscina: superficie, biomasa, peso, crecimiento, eficiencia y estado del ciclo.
 
 <img
-  src={panelScreenshot.src}
+  src={panelKpiEstado.src}
   alt="Panel de estado de la piscina: hectáreas, biomasa, FCA, peso, incremento, eficiencia y días de producción"
   width="100%"
   class="kpi-panel-screenshot"
@@ -102,6 +103,24 @@ La interfaz muestra **`--`** o **`NA`** cuando el sistema aún no puede calcular
 Pasa el cursor sobre un **`--`** o **`NA`** para ver un mensaje de ayuda con el motivo más probable según el estado actual de la piscina.
 :::
 
+### Tooltip personalizado
+
+Al mantener el cursor sobre un valor **`--`** o **`NA`**, aparece un cuadro de ayuda (tooltip) sobre el panel, sin salir de la pantalla. El texto explica por qué falta el dato y, cuando aplica, qué condiciones debe cumplir el ciclo para que se calcule la métrica.
+
+<img
+  src={tooltipKpiJornadasValidas.src}
+  alt="Tooltip del KPI: faltan jornadas válidas en los últimos 7 días para calcular biomasa"
+  width="100%"
+  class="kpi-panel-screenshot"
+/>
+
+En el ejemplo anterior, las tres métricas de **biomasa** muestran **`--`** y el tooltip indica que **faltan jornadas válidas en los últimos 7 días**. Una jornada cuenta si:
+
+- el día está **reconciliado** en alimentación (muestreo), o
+- la **eficiencia de dosis es ≥ 80 %** y el **tiempo acústico es ≥ 100 %**.
+
+Ese mismo estilo de ayuda se usa en otras métricas del panel (FCA, peso, eficiencia, etc.), con el mensaje adaptado a cada caso.
+
 ### Motivos habituales
 
 **Biomasa (las tres métricas)**
@@ -109,7 +128,7 @@ Pasa el cursor sobre un **`--`** o **`NA`** para ver un mensaje de ayuda con el 
 1. Sin peso registrado → hace falta un muestreo.
 2. Menos de 7 días de producción → el ciclo aún no cumple la ventana mínima.
 3. Biomasa por tolva → sin alimentadores asignados.
-4. En otro caso → no hay biomasa acústica válida en los últimos 7 días (día reconciliado, o buena eficiencia de dosis y tiempo acústico suficiente en ese periodo).
+4. En otro caso → no hay biomasa acústica válida en los últimos 7 días (como en el tooltip: faltan jornadas válidas según las reglas anteriores).
 
 **FCA**
 

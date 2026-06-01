@@ -1,0 +1,93 @@
+---
+description: Renombrar, ubicar e integrar imágenes en la documentación Starlight
+globs: src/assets/images/**,src/content/docs/**/*.{md,mdx}
+alwaysApply: false
+---
+
+# Imágenes en la documentación
+
+Cuando el usuario adjunte o agregue una imagen (`image.png`, captura, etc.), **siempre** renombrarla, moverla a la carpeta correcta e integrarla en la página MDX correspondiente.
+
+## Estándar de nombres
+
+| Regla | Detalle |
+|-------|---------|
+| Idioma | **Español** en el nombre del archivo |
+| Formato | `kebab-case`, minúsculas, solo ASCII (sin tildes: `produccion`, no `producción`) |
+| Prohibido | `image.png`, `captura.png`, `Screenshot_*`, nombres genéricos |
+| Siglas UI | Permitidas si son la etiqueta en pantalla: `kpi`, `fca`, `aquasonic` |
+| No usar | Términos en inglés sustituibles (`pond`, `status`, `panel` → `piscina`, `estado`, `panel` ya en español) |
+
+### Patrón del archivo
+
+```
+{tipo}-{contexto}-{descripcion-corta}.{ext}
+```
+
+**Tipos habituales:** `panel`, `tooltip`, `captura`, `diagrama`, `hero`, `logo`
+
+**Ejemplos correctos**
+
+```
+panel-kpi-estado-piscina.png
+tooltip-kpi-jornadas-validas.png
+captura-sidebar-menu.png
+```
+
+**Ejemplos incorrectos**
+
+```
+image.png
+pond-status-panel.png
+kpi-tooltip-jornadas-validas.png   ← tipo al final, mezcla EN/ES
+```
+
+## Ubicación en el repositorio
+
+Las imágenes de documentación van en `src/assets/images/`, **espejando** la ruta del contenido en `src/content/docs/`:
+
+```
+src/content/docs/componentes/dashboard-piscina/kpi.mdx
+  → src/assets/images/componentes/dashboard-piscina/
+```
+
+| Tipo de asset | Carpeta |
+|---------------|---------|
+| Capturas de componentes | `src/assets/images/componentes/{seccion}/` |
+| Guías | `src/assets/images/guias/` |
+| Marca / inicio | `src/assets/images/hero/`, `logo/` |
+| Favicon | `public/favicon/` (no usar `src/assets`) |
+
+**No** dejar imágenes sueltas en `src/assets/images/componentes/` sin subcarpeta de sección.
+
+## Integración en MDX
+
+1. Usar **import** de Astro (no rutas sueltas en `public/` salvo favicon).
+2. Variable de import en **camelCase** derivada del nombre en español.
+3. Clase CSS reutilizable: `kpi-panel-screenshot` o `doc-screenshot` (definidas en `src/styles/aquasonic.css`).
+4. `alt` descriptivo en **español**, mencionando qué se ve en la captura.
+
+```mdx
+import panelKpiEstado from '../../../../assets/images/componentes/dashboard-piscina/panel-kpi-estado-piscina.png';
+
+<img
+  src={panelKpiEstado.src}
+  alt="Panel KPI con métricas de la piscina"
+  width="100%"
+  class="kpi-panel-screenshot"
+/>
+```
+
+## Checklist al recibir una imagen
+
+1. Identificar la página MDX destino (o crearla).
+2. Renombrar según `{tipo}-{contexto}-{descripcion}.png`.
+3. Mover a `src/assets/images/.../` (subcarpeta acorde a la doc).
+4. Eliminar el archivo temporal (`image.png`, etc.).
+5. Añadir import + `<img>` (o sección con contexto) en el MDX.
+6. Verificar con `npm run build`.
+
+## Excepciones
+
+- **Logo y hero**: prefijo de producto `aquasonic-*` permitido.
+- **Favicon**: convención existente en `public/favicon/`.

@@ -61,6 +61,10 @@ Siempre indicar el lenguaje y, si aplica, el nombre del archivo:
 // código TypeScript aquí
 ```
 
+## Imágenes
+
+Ver regla **imagenes-documentacion**: renombrar en español (`kebab-case`), ubicar en `src/assets/images/` espejando la ruta de la página e integrar con import en MDX.
+
 ## Nuevo documento — pasos
 
 1. Crear archivo en la carpeta correcta bajo `src/content/docs/`
