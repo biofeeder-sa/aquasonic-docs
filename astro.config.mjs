@@ -96,6 +96,10 @@ export default defineConfig({
           collapsed: false,
           items: [
             {
+              label: 'Sidebar',
+              link: '/componentes/sidebar/',
+            },
+            {
               label: 'Dashboard de Camaroneras',
               items: [
                 { label: 'Descripción general', link: '/componentes/dashboard-camaroneras/' },
