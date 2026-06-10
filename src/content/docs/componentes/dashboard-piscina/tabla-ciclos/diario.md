@@ -9,6 +9,51 @@ Esta tabla muestra el detalle diario de un ciclo de producción. A continuación
 
 ---
 
+## ¿Por qué a veces no veo todas las columnas?
+
+En la vista **Diario** la tabla puede mostrar **todas las columnas** o **solo parte de ellas**. No es un error de carga: depende de la **camaronera** y de cómo está configurada la **piscina**.
+
+### Cuándo verá la tabla completa
+
+Deben cumplirse **las dos** condiciones siguientes:
+
+1. **Su camaronera tiene habilitada la biomasa acústica**  
+   Es una configuración a nivel de granja. Si la camaronera no la tiene activa, la tabla no incluye las columnas de biomasa, supervivencia ni FCA.
+
+2. **La piscina alimenta en modo gramos por vuelta (GRXREV)**  
+   En el encabezado del dashboard de la piscina, junto a las métricas del ciclo, puede aparecer la etiqueta **GRXREV** o **GRXSEG**. Solo con **GRXREV** (alimentación por vueltas del dosificador) se muestran las columnas de biomasa acústica en esta tabla.
+
+Si **ambas** condiciones se cumplen, también verá estas columnas:
+
+| Columna | Qué muestra |
+|---|---|
+| **SUP** | Supervivencia estimada (%) |
+| **BIO HA** | Biomasa por hectárea (libras) |
+| **BIO** | Biomasa total (libras) |
+| **FCA** | Factor de conversión alimenticia |
+
+### Cuándo verá menos columnas
+
+Si **falta alguna** de las dos condiciones anteriores, esas cuatro columnas **no aparecen en pantalla** (no se muestran vacías ni con `--`; directamente no están en la tabla).
+
+Seguirá viendo, entre otras: **DÍA**, **FECHA**, **PESO**, **CREC LIN**, **INC (DIA)**, **INC (1S)**, **KG DÍA**, **KG DÍA PROM**, **KG DÍA HA** y **ANIMALES** (cuando aplique el cálculo de cada día).
+
+### Situaciones frecuentes
+
+| Lo que observa | Qué significa |
+|---|---|
+| Una piscina muestra SUP y BIO, otra en la misma camaronera no | La piscina sin esas columnas suele estar en **GRXSEG** (por intervalo), no en **GRXREV** |
+| En una camaronera nunca aparecen SUP, BIO ni FCA | Esa camaronera probablemente **no tiene biomasa acústica habilitada** |
+| La columna existe pero el valor es `--` | Es **otro caso**: el dato de ese día aún no se puede calcular (revise el detalle de cada columna más abajo) |
+
+:::note
+**Columna que no aparece** no es lo mismo que **celda con `--`**. Si la columna está en la tabla pero un día no tiene dato, verá `--` en esa celda. Si la configuración no aplica, la columna entera no se muestra.
+:::
+
+La vista **Semanal** del mismo menú sigue la misma regla: las columnas de biomasa, supervivencia y FCA solo se muestran cuando se cumplen las dos condiciones anteriores.
+
+---
+
 ## Resumen de columnas
 
 | # | Columna | Unidad | Descripción breve |
@@ -27,6 +72,8 @@ Esta tabla muestra el detalle diario de un ciclo de producción. A continuación
 | 12 | BIO HA | libras | Biomasa por hectárea |
 | 13 | BIO | libras | Biomasa total estimada |
 | 14 | FCA | — | Factor de conversión alimenticia acumulado |
+
+Las filas **11 a 14** solo aparecen si su camaronera tiene biomasa acústica habilitada y la piscina está en modo **GRXREV** (véase la sección anterior).
 
 ---
 
